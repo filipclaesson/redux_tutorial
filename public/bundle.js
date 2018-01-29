@@ -9827,6 +9827,14 @@ var _bookslist = __webpack_require__(193);
 
 var _bookslist2 = _interopRequireDefault(_bookslist);
 
+var _menu = __webpack_require__(338);
+
+var _menu2 = _interopRequireDefault(_menu);
+
+var _footer = __webpack_require__(339);
+
+var _footer2 = _interopRequireDefault(_footer);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // import actions
@@ -9839,7 +9847,13 @@ var store = (0, _redux.createStore)(_index2.default, middleware);
 (0, _reactDom.render)(_react2.default.createElement(
 	_reactRedux.Provider,
 	{ store: store },
-	_react2.default.createElement(_bookslist2.default, null)
+	_react2.default.createElement(
+		'div',
+		null,
+		_react2.default.createElement(_menu2.default, null),
+		_react2.default.createElement(_bookslist2.default, null),
+		_react2.default.createElement(_footer2.default, null)
+	)
 ), document.getElementById('app'));
 
 // CREATE ACTION
@@ -40759,12 +40773,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Cart = function (_React$Component) {
 	_inherits(Cart, _React$Component);
 
-	function Cart() {
-		_classCallCheck(this, Cart);
-
-		return _possibleConstructorReturn(this, (Cart.__proto__ || Object.getPrototypeOf(Cart)).apply(this, arguments));
-	}
-
 	_createClass(Cart, [{
 		key: 'onDelete',
 		value: function onDelete(id) {
@@ -40803,6 +40811,29 @@ var Cart = function (_React$Component) {
 		key: 'renderEmpty',
 		value: function renderEmpty() {
 			return _react2.default.createElement('div', null);
+		}
+	}]);
+
+	function Cart() {
+		_classCallCheck(this, Cart);
+
+		var _this = _possibleConstructorReturn(this, (Cart.__proto__ || Object.getPrototypeOf(Cart)).call(this));
+
+		_this.state = {
+			showModel: false
+		};
+		return _this;
+	}
+
+	_createClass(Cart, [{
+		key: 'show',
+		value: function show() {
+			this.setState({ showModal: true });
+		}
+	}, {
+		key: 'handleClose',
+		value: function handleClose() {
+			this.setState({ showModal: false });
 		}
 	}, {
 		key: 'renderCart',
@@ -40892,8 +40923,40 @@ var Cart = function (_React$Component) {
 						),
 						_react2.default.createElement(
 							_reactBootstrap.Button,
-							{ bsStyle: 'success', bsSize: 'small' },
+							{ onClick: this.show.bind(this), bsStyle: 'success', bsSize: 'small' },
 							'Proceed To Checkout'
+						)
+					)
+				),
+				_react2.default.createElement(
+					_reactBootstrap.Modal,
+					{ show: this.state.showModal, onHide: this.handleClose.bind(this) },
+					_react2.default.createElement(
+						_reactBootstrap.Modal.Header,
+						{ closeButton: true },
+						_react2.default.createElement(
+							_reactBootstrap.Modal.Title,
+							null,
+							'Thank You!'
+						)
+					),
+					_react2.default.createElement(
+						_reactBootstrap.Modal.Body,
+						null,
+						_react2.default.createElement(
+							'h6',
+							null,
+							' hej'
+						)
+					),
+					_react2.default.createElement(
+						_reactBootstrap.Modal.Footer,
+						null,
+						_react2.default.createElement(_reactBootstrap.Col, { xs: 6 }),
+						_react2.default.createElement(
+							_reactBootstrap.Button,
+							{ onClick: this.handleClose.bind(this) },
+							'Close'
 						)
 					)
 				)
@@ -40916,6 +40979,170 @@ function mapDispatchToProps(dispatch) {
 	}, dispatch);
 }
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Cart);
+
+/***/ }),
+/* 336 */,
+/* 337 */,
+/* 338 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactBootstrap = __webpack_require__(48);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Menu = function (_React$Component) {
+	_inherits(Menu, _React$Component);
+
+	function Menu() {
+		_classCallCheck(this, Menu);
+
+		return _possibleConstructorReturn(this, (Menu.__proto__ || Object.getPrototypeOf(Menu)).apply(this, arguments));
+	}
+
+	_createClass(Menu, [{
+		key: 'render',
+		value: function render() {
+			return _react2.default.createElement(
+				_reactBootstrap.Navbar,
+				{ inverse: true, fixedTop: true },
+				_react2.default.createElement(
+					_reactBootstrap.Navbar.Header,
+					null,
+					_react2.default.createElement(
+						_reactBootstrap.Navbar.Brand,
+						null,
+						_react2.default.createElement(
+							'a',
+							{ href: '/' },
+							'React-Bootstrap'
+						)
+					),
+					_react2.default.createElement(_reactBootstrap.Navbar.Toggle, null)
+				),
+				_react2.default.createElement(
+					_reactBootstrap.Navbar.Collapse,
+					null,
+					_react2.default.createElement(
+						_reactBootstrap.Nav,
+						null,
+						_react2.default.createElement(
+							_reactBootstrap.NavItem,
+							{ eventKey: 1, href: '/about' },
+							'About'
+						),
+						_react2.default.createElement(
+							_reactBootstrap.NavItem,
+							{ eventKey: 2, href: '/contacts' },
+							'Contact Us'
+						)
+					),
+					_react2.default.createElement(
+						_reactBootstrap.Nav,
+						{ pullRight: true },
+						_react2.default.createElement(
+							_reactBootstrap.NavItem,
+							{ eventKey: 1, href: '/admin' },
+							'Admin'
+						),
+						_react2.default.createElement(
+							_reactBootstrap.NavItem,
+							{ eventKey: 2, href: '/cart' },
+							'Your Cart',
+							_react2.default.createElement(
+								_reactBootstrap.Badge,
+								{ className: 'badge' },
+								'1'
+							)
+						)
+					)
+				)
+			);
+		}
+	}]);
+
+	return Menu;
+}(_react2.default.Component);
+
+exports.default = Menu;
+
+/***/ }),
+/* 339 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactBootstrap = __webpack_require__(48);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Footer = function (_React$Component) {
+	_inherits(Footer, _React$Component);
+
+	function Footer() {
+		_classCallCheck(this, Footer);
+
+		return _possibleConstructorReturn(this, (Footer.__proto__ || Object.getPrototypeOf(Footer)).apply(this, arguments));
+	}
+
+	_createClass(Footer, [{
+		key: 'render',
+		value: function render() {
+			return _react2.default.createElement(
+				'footer',
+				{ className: 'footer text-center' },
+				_react2.default.createElement(
+					'div',
+					{ className: 'container' },
+					_react2.default.createElement(
+						'p',
+						{ className: 'footer-text' },
+						' Copyright 2018 Filip'
+					)
+				)
+			);
+		}
+	}]);
+
+	return Footer;
+}(_react2.default.Component);
+
+exports.default = Footer;
 
 /***/ })
 /******/ ]);
