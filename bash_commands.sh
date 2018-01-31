@@ -15,3 +15,19 @@ createdb udemy-tutorial
 
 # router
 npm i --save react-router@3.0.2
+
+
+# install express generator
+# (backup package json file)
+npm install express-generator -g 
+express # this will generate folder structure and files
+
+npm install # this installs the new dependencies
+#copy paste the old dependencies
+npm install
+npm start
+
+# nodemon
+npm i nodemon -g
+npm i --save-dev nodemon
+nodemon
