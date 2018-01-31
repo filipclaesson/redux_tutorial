@@ -2,7 +2,8 @@
 import React from 'react'
 import {render} from 'react-dom'
 import {Provider} from 'react-redux'
-
+// REACT ROUTER
+import {Router, Route, IndexRoute, browserHistory, hashHistory} from 'react-router'
 
 import {applyMiddleware, createStore} from 'redux';
 import logger from 'redux-logger';
@@ -19,18 +20,25 @@ const middleware = applyMiddleware(logger);
 const store = createStore(reducers, middleware);
 
 import BooksList from './components/pages/bookslist';
-import Menu from './components/menu';
-import Footer from './components/footer';
+import Cart from './components/pages/cart'
+import BooksForm from './components/pages/booksForm'
+import Main from './main'
 
-render(
+const Routes = (
 	<Provider store={store}>
 		<div>
-			<Menu />
-			<BooksList />
-			<Footer />
+			<Router history={browserHistory}>
+				<Route path="/" component={Main}>
+					<IndexRoute component={BooksList}/>
+					<Route path="/admin" component={BooksForm}/>
+					<Route path="/cart" component={Cart}/>
+				</Route>
+			</Router>
 		</div>
 	</Provider>
-	, document.getElementById('app')
+)
+render(
+	Routes, document.getElementById('app')
 );
 
 

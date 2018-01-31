@@ -10,7 +10,8 @@ npm i --save babel-core babel-loader babel-preset-es2015 babel-preset-stage-1 ba
 #https://scotch.io/tutorials/getting-started-with-node-express-and-postgres-using-sequelize
 npm install --save sequelize pg pg-hstore
 sequelize init
-
-
-
+# postgres
 createdb udemy-tutorial
+
+# router
+npm i --save react-router@3.0.2
