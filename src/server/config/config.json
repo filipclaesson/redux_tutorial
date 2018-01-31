@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "filip",
+    "password": "lagge",
+    "database": "udemy-tutorial",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "filip",
+    "password": "lagge",
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "filip",
+    "password": "lagge",
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
