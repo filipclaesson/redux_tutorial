@@ -7,6 +7,7 @@ import {Router, Route, IndexRoute, browserHistory, hashHistory} from 'react-rout
 
 import {applyMiddleware, createStore} from 'redux';
 import logger from 'redux-logger';
+import thunk from 'redux-thunk'
 // import combined reducers
 import reducers from './reducers/index';
 
@@ -15,7 +16,7 @@ import {addToCart} from './actions/cartActions';
 import {postBooks,deleteBooks,updateBooks} from './actions/booksActions';
 
 
-const middleware = applyMiddleware(logger);
+const middleware = applyMiddleware(thunk,logger);
 // STEP 1 Create a store and subscribe for any changes
 const store = createStore(reducers, middleware);
 
